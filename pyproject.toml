@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pyconjp-tv-mock-cli"
+version = "0.1.0"
+description = "PyCon JP TV デモ用 CLI ツール"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.12"
+dependencies = [
+    "click>=8.1",
+]
+
+[project.scripts]
+pyconjp-tv = "pyconjp_tv_mock_cli.main:cli"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pyconjp_tv_mock_cli"]
+
+[tool.ruff]
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
