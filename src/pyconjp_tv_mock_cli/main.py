@@ -50,7 +50,7 @@ def build_parser() -> argparse.ArgumentParser:
         version=f"pyconjp-tv {__version__}",
     )
 
-    subparsers = parser.add_subparsers(dest="command", required=True)
+    subparsers = parser.add_subparsers(dest="command")
 
     greet_parser = subparsers.add_parser("greet", help="挨拶を表示します")
     greet_parser.add_argument(
@@ -84,7 +84,11 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def cli(argv: Sequence[str] | None = None) -> int:
-    args = build_parser().parse_args(argv)
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    if not hasattr(args, "func"):
+        parser.print_help()
+        return 0
     args.func(args)
     return 0
 
