@@ -10,11 +10,10 @@ readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.12"
 dependencies = [
-    "click>=8.1",
 ]
 
 [project.scripts]
-pyconjp-tv = "pyconjp_tv_mock_cli.main:cli"
+pyconjp-tv = "pyconjp_tv_mock_cli.main:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/pyconjp_tv_mock_cli"]
