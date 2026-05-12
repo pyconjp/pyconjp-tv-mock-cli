@@ -29,7 +29,7 @@ def test_schedule(capsys: pytest.CaptureFixture[str]) -> None:
     assert result == 0
     captured = capsys.readouterr()
     assert "スケジュール" in captured.out
-    assert "10:00" in captured.out
+    assert "19:30" in captured.out
 
 
 def test_speaker(capsys: pytest.CaptureFixture[str]) -> None:
@@ -37,7 +37,7 @@ def test_speaker(capsys: pytest.CaptureFixture[str]) -> None:
     assert result == 0
     captured = capsys.readouterr()
     assert "登壇者" in captured.out
-    assert "山田 太郎" in captured.out
+    assert "Manabu TERADA" in captured.out
 
 
 def test_version(capsys: pytest.CaptureFixture[str]) -> None:

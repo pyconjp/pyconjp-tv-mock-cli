@@ -3,22 +3,18 @@ from collections.abc import Sequence
 
 from pyconjp_tv_mock_cli import __version__
 
-MOCK_SCHEDULE = [
-    {"time": "10:00", "title": "オープニング", "speaker": "運営チーム"},
-    {"time": "10:30", "title": "Pythonでつくる CLI ツール入門", "speaker": "山田 太郎"},
-    {
-        "time": "11:30",
-        "title": "PyPI へのパッケージ公開ハンズオン",
-        "speaker": "鈴木 花子",
-    },
-    {"time": "13:00", "title": "型ヒントと mypy 実践", "speaker": "田中 次郎"},
-    {"time": "14:00", "title": "クロージング", "speaker": "運営チーム"},
+SCHEDULE = [
+    {"time": "19:30", "title": "オープニング: チャンネル紹介、自己紹介(3分)"},
+    {"time": "19:33", "title": "Pythonニュース(10分)"},
+    {"time": "19:43", "title": "メイントーク(35分)"},
+    {"time": "20:23", "title": "お便りコーナー(5分)"},
+    {"time": "20:23", "title": "次回告知、感想(5分)"},
+    {"time": "20:30", "title": "🍺タイム"},
 ]
 
-MOCK_SPEAKERS = [
-    {"name": "山田 太郎", "bio": "Python 歴 10 年。OSS 活動が趣味。"},
-    {"name": "鈴木 花子", "bio": "パッケージング職人。PyPI に 20 本以上公開。"},
-    {"name": "田中 次郎", "bio": "型安全な Python を布教中。"},
+SPEAKERS = [
+    {"name": "Manabu TERADA", "nickname": "terada"},
+    {"name": "Takanori Suzuki", "nickname": "takanory"},
 ]
 
 
@@ -31,15 +27,15 @@ def _greet_command(args: argparse.Namespace) -> None:
 
 def _schedule_command(_: argparse.Namespace) -> None:
     print("=== PyCon JP TV スケジュール ===")
-    for session in MOCK_SCHEDULE:
-        print(f"  {session['time']}  {session['title']}  ({session['speaker']})")
+    for session in SCHEDULE:
+        print(f"  {session['time']}  {session['title']}")
 
 
 def _speaker_command(_: argparse.Namespace) -> None:
     print("=== 登壇者一覧 ===")
-    for i, speaker in enumerate(MOCK_SPEAKERS, start=1):
+    for i, speaker in enumerate(SPEAKERS, start=1):
         print(f"  {i}. {speaker['name']}")
-        print(f"     {speaker['bio']}")
+        print(f"     {speaker['nickname']}")
 
 
 def build_parser() -> argparse.ArgumentParser:
